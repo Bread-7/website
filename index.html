@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Employee Management System</title>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode-generator/qrcode.min.js"></script>
+    <!-- <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script> -->
+</head>
+<body>
+	<h1>Employee Management System</h1>
+	<div id="${firstName}${lastName}-qrCode"></div>
+	<!-- Add Employee Section -->
+	<h2>Add Employee</h2>
+	<form id="addEmployeeForm">
+		<label for="firstNameInput">First Name:</label>
+		<input type="text" id="firstNameInput" required><br><br>
+		
+		<label for="lastNameInput">Last Name:</label>
+		<input type="text" id="lastNameInput" required><br><br>
+		
+		<label for="positionInput">Position:</label>
+		<input type="text" id="positionInput" required><br><br>
+		
+		<label for="salaryInput">Hourly Salary:</label>
+		<input type="number" id="salaryInput" min="0" step="0.01" required><br><br>
+		
+		<input type="submit" value="Submit">
+	</form>
+	<!-- View Employee Data Section -->
+	<h2>View Employee Data</h2>
+	<form id="viewEmployeeDataForm">
+		<label for="employeeNameSelect">Select Employee:</label>
+		<select id="employeeNameSelect" required></select><br><br>
+		
+		<label for="startDateInput">Start Date:</label>
+		<input type="date" id="startDateInput" max="<%= new Date().toISOString().split('T')[0] %>" required><br><br>
+		
+		<label for="endDateInput">End Date:</label>
+		<input type="date" id="endDateInput" max="<%= new Date().toISOString().split('T')[0] %>" required><br><br>
+		
+		<input type="submit" value="Submit">
+	</form>
+	
+	<!-- Remove Employee Section -->
+	<h2>Remove Employee</h2>
+	<form id="removeEmployeeForm">
+		<label for="removeEmployeeSelect">Select Employee:</label>
+		<select id="removeEmployeeSelect" required></select><br><br>
+		
+		<input type="submit" value="Submit">
+	</form>
+	
+	<!-- Employee Data Table -->
+	<h2>Employee Data Table</h2>
+	<table id="employeeDataTable">
+		<thead>
+			<tr>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Position</th>
+				<th>Hourly Salary</th>
+				<th>QR Code</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+	
+	<!-- QR Code Modal -->
+	<div id="qrCodeModal" class="modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<div id="qrCode"></div>
+		</div>
+	</div>
+	
+	<script type="module" src="app.js"></script>
+</body>
+</html>
